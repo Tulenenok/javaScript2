@@ -34,6 +34,31 @@ class Products {
             block.insertAdjacentHTML('beforeend', newProduct.makeProductHtml());
         })
     }
+
+    // метод, который определяет стоимость всех продуктов
+    costProducts() {
+        var sum = 0;
+        this.goods.forEach(item => {sum+= item.price;})
+        return cost;
+    }
+}
+
+class Backet {
+    constructor() {
+        this.goods = []
+    }
+
+    // Методы - добавить товар в каком-то количестве, удалить в каком-то количестве, посчитать стоимость всех продуктов
+    addProduct (product, count) {}
+    removeProduct (product, count) {}
+    costAllProducts() {}
+}
+
+class ProductInBasket extends Products {
+    constructor(product, count) {
+        super(product);
+        this.count = count;
+    }
 }
 
 let list = new Products;
