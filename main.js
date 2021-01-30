@@ -39,7 +39,7 @@ class Products {
     costProducts() {
         var sum = 0;
         this.goods.forEach(item => {sum+= item.price;})
-        return cost;
+        return sum;
     }
 }
 
