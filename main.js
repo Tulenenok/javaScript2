@@ -21,25 +21,26 @@ class ProductItem {
 }
 
 class Products {
-    constructor(container = '.products') {
+    constructor(container = '.products', list = helper) {
         this.container = container;
         this.goods = [];
+        this.helper = list;
         this.getProducts()
-            .then(data => {
-                this.goods = [...data];
-                this.InsertProductHtml()
-            });
     }
 
     getProducts() {
         return fetch(`${API}/catalogData.json`)
                 .then(result => result.json())
+                .then(data => {
+                    this.goods = [...data];
+                    this.InsertProductHtml()
+                });
     }
 
     InsertProductHtml() {
         const block = document.querySelector(this.container);
         this.goods.forEach(elem => {
-            const newProduct = new ProductItem(elem);
+            const newProduct = new this.helper[this.constructor.name](elem);
             block.insertAdjacentHTML('beforeend', newProduct.makeProductHtml());
         })
     }
@@ -47,30 +48,49 @@ class Products {
     // метод, который определяет стоимость всех продуктов
     costProducts() {
         var sum = 0;
-        this.goods.forEach(item => {sum+= item.price;})
+        this.goods.forEach(item => {sum += item.price;})
         return sum;
     }
 }
 
-class Backet {
-    constructor() {
-        this.goods = []
+class BasketItem extends ProductItem {
+    constructor(product, image = 'https://placehold.it/50x100') {
+        super(product, image);
+        this.quantity = product.quantity;
     }
 
-    // Методы - добавить товар в каком-то количестве, удалить в каком-то количестве, посчитать стоимость всех продуктов
-    addProduct (product, count) {}
-    removeProduct (product, count) {}
-    costAllProducts() {}
-}
-
-class ProductInBasket extends Products {
-    constructor(product, count) {
-        super(product);
-        this.count = count;
+    makeProductHtml() {
+        return `<div class = 'basket-item'>
+                    <img class = 'basket-image' src= ${this.image} alt="">
+                    <div class = 'basket-wrapper'>
+                        <p class = 'basket-title'>${this.title}</p>
+                        <p class = 'basket-quantity'>Количество: ${this.quantity}</p>
+                        <p class = 'basket-price'>$${this.price}</p>
+                    </div>
+                </div>`
     }
 }
+class Basket extends Products{
+    constructor (container = '.basket') {
+        super(container);
+    }s
+
+    getProducts() {
+        return fetch(`${API}/getBasket.json`)
+            .then(result => result.json())
+            .then(data => {
+                this.goods = [...data.contents];
+                this.InsertProductHtml()
+            });
+    }
+}
+
+let helper = {
+    Basket: BasketItem,
+    Products: ProductItem
+};
 
 let list = new Products;
-list.InsertProductHtml();
+let basket = new Basket;
 
 
