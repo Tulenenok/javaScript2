@@ -1,18 +1,49 @@
-.title {
-    margin: 20px;
-    position: relative;
-    text-align: center;
-    font-size: 40px;
-    font-family: 'Hachi Maru Pop', cursive;
+header {
+    background-color: black;
+    padding: 13px;
+    margin: 0 0 20px 0;
+    box-sizing: border-box;
 }
+
+.title {
+    text-align: center;
+    position: relative;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 50px;
+    color: white;
+}
+
 .button {
     position: absolute;
-    top: 20px;
-    left: 1400px;
-    font-family: 'Hachi Maru Pop', cursive;
+    top: 37px;
+    left: 1300px;
 }
+.button, .product-button {
+    display: block;
+    margin: 30px 20px;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 10px 40px;
+    background-color: black;
+    color: white; 
+    text-align: center;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 25px;
+}
+
+.button:hover {
+    background-color: white;
+    color: black;
+}
+
+.button:active{
+    background-color: black;
+    color: white;
+}
+
 .products {
     display: flex;
+    justify-content: space-around;
 }
 
 .product-item {
@@ -21,6 +52,9 @@
     height: 300px;
     margin: 40px;
     background: white;
+    padding: 40px 0 0;
+    border: 2px solid;
+    border-radius: 5px;
 }
 
 .products-image {
@@ -31,24 +65,25 @@
     margin-right: auto;
 }
 
-.product-title {
-    font-size: 18px;
-    font-family: 'Hachi Maru Pop', cursive;
-    text-align: center;
-}
-
-.product-price {
-    font-family: 'Hachi Maru Pop', cursive;
+.product-title, .product-price {
+    font-size: 25px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     text-align: center;
 }
 
 .product-button {
-    display: block;
     margin: 0 auto;
-    padding: 10px 50px;
-    font-family: 'Hachi Maru Pop', cursive;
-    text-align: center;
-    background-color: turquoise;
-    border: none;
+    background-color: white;
+    color: black;
+}
+
+.product-button:hover{
+    background-color: black;
+    color: white;
+}
+
+.product-button:active {
+    background-color: white;
+    color: black;
 }
 

@@ -1,17 +1,21 @@
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
 class ProductItem {
-    constructor(product) {
-        this.id = product.id;
-        this.image = product.image;
-        this.title = product.title;
+    constructor(product, image = 'https://placehold.it/200x150') {
+        this.id = product.id_product;
+        this.image = image;
+        this.title = product.product_name;
         this.price = product.price;
     }
 
     makeProductHtml() {
         return `<div class = 'product-item'>
                     <img class = 'products-image' src= ${this.image} alt="">
-                    <p class = 'product-title'>${this.title}</p>
-                    <p class = 'product-price'>${this.price}</p>
-                    <button class = 'product-button'>Купить</button>
+                    <div class = 'product-wrapper'>
+                        <p class = 'product-title'>${this.title}</p>
+                        <p class = 'product-price'>${this.price}</p>
+                        <button class = 'product-button'>Купить</button>
+                    </div>
                 </div>`
     }
 }
@@ -19,12 +23,17 @@ class ProductItem {
 class Products {
     constructor(container = '.products') {
         this.container = container;
-        this.goods = [
-            {id: 1, image: 'img/1.jpg', title: 'Яндекс.Книга', price: 1200},
-            {id: 2, image: 'img/2.jpg', title: 'Два капитана', price: 600},
-            {id: 3, image: 'img/3.jpg', title: 'Полдень 22 век', price: 750},
-            {id: 4, image: 'img/4.jpg', title: 'Физтеховская математика', price: 220}
-        ];
+        this.goods = [];
+        this.getProducts()
+            .then(data => {
+                this.goods = [...data];
+                this.InsertProductHtml()
+            });
+    }
+
+    getProducts() {
+        return fetch(`${API}/catalogData.json`)
+                .then(result => result.json())
     }
 
     InsertProductHtml() {
