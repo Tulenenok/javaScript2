@@ -14,18 +14,21 @@ class ProductItem {
                     <div class = 'product-wrapper'>
                         <p class = 'product-title'>${this.title}</p>
                         <p class = 'product-price'>${this.price}</p>
-                        <button class = 'product-button'>Купить</button>
+                        <button class = 'product-button' data-title = ${this.title} data-price = ${this.price}>Купить</button>
                     </div>
                 </div>`
     }
 }
 
 class Products {
-    constructor(container = '.products', list = helper) {
+    constructor(container = '.products', basket = '', list = helper) {
         this.container = container;
         this.goods = [];
         this.helper = list;
-        this.getProducts()
+        this.allProducts = [];
+        this.basket = basket;
+        this.getProducts();
+        if (this.basket != '') {this.addProductToBasket();};
     }
 
     getProducts() {
@@ -41,7 +44,17 @@ class Products {
         const block = document.querySelector(this.container);
         this.goods.forEach(elem => {
             const newProduct = new this.helper[this.constructor.name](elem);
+            this.allProducts.push(newProduct);
             block.insertAdjacentHTML('beforeend', newProduct.makeProductHtml());
+        })
+    }
+
+    addProductToBasket() {
+        document.querySelectorAll(this.container).forEach(elem => {
+            elem.addEventListener('click', event => {
+                if (event.target.classList.contains('product-button'))
+                    {this.basket.addProduct(event.target);}
+            })
         })
     }
 
@@ -60,28 +73,52 @@ class BasketItem extends ProductItem {
     }
 
     makeProductHtml() {
-        return `<div class = 'basket-item'>
+        return `<div class = 'basket-item' data-title = ${this.title}>
                     <img class = 'basket-image' src= ${this.image} alt="">
                     <div class = 'basket-wrapper'>
                         <p class = 'basket-title'>${this.title}</p>
                         <p class = 'basket-quantity'>Количество: ${this.quantity}</p>
                         <p class = 'basket-price'>$${this.price}</p>
                     </div>
+                    <button class = 'basket-button'>-</button>
                 </div>`
     }
 }
 class Basket extends Products{
     constructor (container = '.basket') {
         super(container);
-    }s
+        this.addClick();
+    }
 
     getProducts() {
         return fetch(`${API}/getBasket.json`)
             .then(result => result.json())
             .then(data => {
                 this.goods = [...data.contents];
-                this.InsertProductHtml()
+                this.InsertProductHtml();
             });
+    }
+
+    addProduct(product) {
+        let productTitle = product.dataset['title'];
+        let productPrice = product.dataset['price'];
+        let find = this.allProducts.find(elem => elem.title === productTitle);
+        if (find) {
+            find.quantity++;
+            this.updateBasket(find);
+        }
+    }
+
+    updateBasket(find) {
+       let block =  document.querySelector(`.basket-item[data-title = ${find.title}]`);
+       block.querySelector('.basket-quantity').textContent = `Количество: ${find.quantity}`;
+       console.log(block);
+    }
+
+    addClick() {
+        document.querySelector('.button').addEventListener('click', () => {
+            document.querySelector('.basket').classList.toggle('hide');
+        });
     }
 }
 
@@ -90,7 +127,7 @@ let helper = {
     Products: ProductItem
 };
 
-let list = new Products;
 let basket = new Basket;
+let list = new Products('.products', basket);
 
 

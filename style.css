@@ -22,7 +22,7 @@ header {
     top: 37px;
     left: 1300px;
 }
-.button, .product-button {
+.button, .product-button, .basket-button {
     display: block;
     margin: 30px 20px;
     border: 2px solid;
@@ -45,6 +45,9 @@ header {
     color: white;
 }
 
+.hide {
+    display: none;
+}
 
 .basket {
     background-color: white;
@@ -57,7 +60,7 @@ header {
     top: 128px;
     left: 1200px;
     border: 2px black;
-    z-index: 2;
+    z-index: 3;
 }
 .basket::before, .basket::after {
     content: ''; 
@@ -65,7 +68,7 @@ header {
     left: 180px; bottom: 265px; 
     border: 20px solid transparent; 
     border-bottom: 20px solid black;
-    z-index: 1;
+    z-index: 2;
    }
 
 .basket::after {
@@ -80,12 +83,29 @@ header {
 }
 
 .basket-wrapper {
-    margin: 0 0 0 20px;
+    margin: 0 20px 0 0;
+}
+
+.basket-button {
+    margin: 0 auto;
+    background-color: white;
+    color: black;
+    padding: 10px 10px;
+}
+
+.basket-button:hover{
+    background-color: black;
+    color: white;
+}
+
+.basket-button:active {
+    background-color: white;
+    color: black;
 }
 
 .products {
     position: relative;
-    z-index: -1;
+    z-index: 1;
     display: flex;
     justify-content: space-around;
 }
