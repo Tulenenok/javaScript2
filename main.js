@@ -150,6 +150,47 @@ class Basket extends Products{
     }
 }
 
+class Form {
+    constructor() {
+        this._addEvent();
+    }
+
+    _invalidValue(elem) {
+        elem.classList.add('redBorder');
+    }
+
+    _addMessageError(elem, text) {
+        let div = document.querySelector(`#${elem.classList[0]}`);
+        div.textContent = `${text}`;
+        div.classList.remove('hide');
+    }
+    _removeMessageError(elem) {
+        let div = document.querySelector(`#${elem.classList[0]}`);
+        div.classList.add('hide');
+    }
+
+    _check(container, newRegexp, text = 'Ошибка') {
+        let elem = document.querySelector(container);
+        let regexp = newRegexp;
+        if (!(regexp.test(elem.value))) {
+            this._invalidValue(elem);
+            this._addMessageError(elem, text)
+        } else if (elem.classList.contains('redBorder')) {
+            elem.classList.remove('redBorder');
+            this._removeMessageError(elem);
+        }
+    }
+
+    _addEvent() {
+        document.querySelector('.feedback-button').addEventListener('click', event => {
+            event.preventDefault();
+            this._check('.feedback-name', new RegExp(/^[a-zа-яё\s]+$/i), 'Допустимы только буквы');                               // Проверка имени
+            this._check('.feedback-email', new RegExp(/^[a-z\-\.]+(@mail\.ru)$/i), 'Необходим формат my.m-ail@mail.ru');       // Проверка email
+            this._check('.feedback-phone', new RegExp(/^(\+7)\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/i), 'Необходим формат +7(000)000-0000');        // Проверка телефона
+        })
+    }
+}
+
 let helper = {
     Basket: BasketItem,
     Products: ProductItem
@@ -157,5 +198,6 @@ let helper = {
 
 let basket = new Basket;
 let list = new Products('.products', basket);
+let form = new Form;
 
 

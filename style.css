@@ -175,12 +175,23 @@ footer {
 
 }
 
+.footer-wrapper {
+    margin: 0 120px 0 0;
+}
+
+.message {
+    color: #ff0000b4;
+    font-size: 18px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin: 10px 0 0 0;
+}
+
 .feedback-title {
     text-align: center;
-    margin: 0 120px 0 0;
     color: white;
     font-size: 50px;
     font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin: 0 120px 0 0;
 }
 
 .feedback {
@@ -195,7 +206,7 @@ footer {
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: 22px;
     height: 40px;
-    margin: 10px;
+    margin: 5px 10px 10px;
     padding: 5px;
     background-color: black;
     color: white;
@@ -212,7 +223,11 @@ footer {
     text-align: center;
 }
 
-.f-item:focus {
+.f-item:focus, .f-item:active {
     background-color: white;
     color: black;
+}
+
+.redBorder {
+    border: 2px solid red;
 }
