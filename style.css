@@ -1,18 +1,122 @@
-.title {
-    margin: 20px;
-    position: relative;
-    text-align: center;
-    font-size: 40px;
-    font-family: 'Hachi Maru Pop', cursive;
+body {
+    margin: 0 auto;
 }
+
+header {
+    background-color: black;
+    padding: 13px;
+    margin: 0 0 20px 0;
+    box-sizing: border-box;
+}
+
+.title {
+    text-align: center;
+    position: relative;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 50px;
+    color: white;
+}
+
 .button {
     position: absolute;
-    top: 20px;
-    left: 1400px;
-    font-family: 'Hachi Maru Pop', cursive;
+    top: 37px;
+    left: 1300px;
 }
-.products {
+.button, .product-button, .basket-button {
+    display: block;
+    margin: 30px 20px;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 10px 40px;
+    background-color: black;
+    color: white; 
+    text-align: center;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 25px;
+}
+
+.button:hover {
+    background-color: white;
+    color: black;
+}
+
+.button:active{
+    background-color: black;
+    color: white;
+}
+
+.hide {
+    display: none;
+}
+
+.basket {
+    background-color: white;
+    width: 250px;
+    min-height: 50px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    position: absolute;
+    top: 128px;
+    left: 1200px;
+    border: 2px black;
+    box-shadow: 0 0 5px  rgba(122,122,122,0.5);
+    z-index: 3;
+}
+.basket::before, .basket::after {
+    content: ''; 
+    position: absolute;
+    left: 180px; top: -40px; 
+    border: 20px solid transparent; 
+    border-bottom: 20px solid black;
+    z-index: 2;
+   }
+
+.basket::after {
+    border-bottom: 20px solid white;
+}
+
+.basket-item {
+    color: black;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     display: flex;
+    margin: 15px 0;
+}
+
+.basket-wrapper {
+    margin: 0 20px 0 0;
+}
+
+.basket-button {
+    margin: 0 auto;
+    background-color: white;
+    color: black;
+    padding: 10px 10px;
+}
+
+.basket-button:hover{
+    background-color: black;
+    color: white;
+}
+
+.basket-button:active {
+    background-color: white;
+    color: black;
+}
+
+.products {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+}
+
+.basket-price, .basket-quantity {
+    margin: 0 auto;
+}
+
+.basket-title {
+    margin: 0 0 17px 0;
+    font-size: 20px;
 }
 
 .product-item {
@@ -21,34 +125,39 @@
     height: 300px;
     margin: 40px;
     background: white;
+    padding: 40px 0 0;
+    border: 2px solid;
+    border-radius: 5px;
 }
 
-.products-image {
+.products-image, .basket-image {
     display: block;
     max-width: 100%;
     max-height: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto 20px;
 }
 
-.product-title {
-    font-size: 18px;
-    font-family: 'Hachi Maru Pop', cursive;
-    text-align: center;
-}
+.products-image {margin: auto auto;}
 
-.product-price {
-    font-family: 'Hachi Maru Pop', cursive;
+.product-title, .product-price {
+    font-size: 25px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     text-align: center;
 }
 
 .product-button {
-    display: block;
     margin: 0 auto;
-    padding: 10px 50px;
-    font-family: 'Hachi Maru Pop', cursive;
-    text-align: center;
-    background-color: turquoise;
-    border: none;
+    background-color: white;
+    color: black;
+}
+
+.product-button:hover{
+    background-color: black;
+    color: white;
+}
+
+.product-button:active {
+    background-color: white;
+    color: black;
 }
 
