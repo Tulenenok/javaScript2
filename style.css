@@ -51,21 +51,21 @@ header {
 
 .basket {
     background-color: white;
-    max-width: 250px;
+    width: 250px;
     min-height: 50px;
-    min-width: 230px;
     border-radius: 5px;
     padding: 10px 20px;
     position: absolute;
     top: 128px;
     left: 1200px;
     border: 2px black;
+    box-shadow: 0 0 5px  rgba(122,122,122,0.5);
     z-index: 3;
 }
 .basket::before, .basket::after {
     content: ''; 
     position: absolute;
-    left: 180px; bottom: 265px; 
+    left: 180px; top: -40px; 
     border: 20px solid transparent; 
     border-bottom: 20px solid black;
     z-index: 2;
