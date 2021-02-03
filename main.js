@@ -73,14 +73,14 @@ class BasketItem extends ProductItem {
     }
 
     makeProductHtml() {
-        return `<div class = 'basket-item' data-title = ${this.title}>
+        return `<div class = 'basket-item' data-title = ${this.title} data-price = ${this.price} data-id = ${this.id} data-image = ${this.image} data-quantity = ${this.quantity}>
                     <img class = 'basket-image' src= ${this.image} alt="">
                     <div class = 'basket-wrapper'>
                         <p class = 'basket-title'>${this.title}</p>
                         <p class = 'basket-quantity'>Количество: ${this.quantity}</p>
                         <p class = 'basket-price'>$${this.price}</p>
                     </div>
-                    <button class = 'basket-button'>-</button>
+                    <button class = 'basket-button' data-title = ${this.title} data-price = ${this.price} data-id = ${this.id} data-image = ${this.image} data-quantity = ${this.quantity}>-</button>
                 </div>`
     }
 }
@@ -106,19 +106,47 @@ class Basket extends Products{
         if (find) {
             find.quantity++;
             this.updateBasket(find);
+        } else {
+            let product = {
+                id: product.dataset['id'],
+                image:product.dataset['image'],
+                title: productTitle,
+                price: productPrice,
+                quantity: 1
+            };
+            this.goods = [product];
+            this.InsertProductHtml()
+        }
+    }
+
+    removeProduct(product) {
+        let productTitle = product.dataset['title'];
+        let productPrice = product.dataset['price'];
+        let find = this.allProducts.find(elem => elem.title === productTitle);
+        if (find.quantity === 1) {
+            this.allProducts.splice(this.allProducts.indexOf(find), 1);
+            document.querySelector(`.basket-item[data-title = ${productTitle}]`).remove();
+        } else {
+            find.quantity--;
+            this.updateBasket(find);
         }
     }
 
     updateBasket(find) {
        let block =  document.querySelector(`.basket-item[data-title = ${find.title}]`);
        block.querySelector('.basket-quantity').textContent = `Количество: ${find.quantity}`;
-       console.log(block);
     }
 
     addClick() {
         document.querySelector('.button').addEventListener('click', () => {
             document.querySelector('.basket').classList.toggle('hide');
         });
+        document.querySelector('.basket').addEventListener('click', event => {
+            if (event.target.classList.contains('basket-button')) {
+                console.log(event.target);
+                this.removeProduct(event.target);
+            }
+        })
     }
 }
 
