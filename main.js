@@ -107,14 +107,14 @@ class Basket extends Products{
             find.quantity++;
             this.updateBasket(find);
         } else {
-            let product = {
+            let newProduct = {
                 id: product.dataset['id'],
                 image:product.dataset['image'],
-                title: productTitle,
+                product_name: productTitle,
                 price: productPrice,
                 quantity: 1
             };
-            this.goods = [product];
+            this.goods = [newProduct];
             this.InsertProductHtml()
         }
     }
