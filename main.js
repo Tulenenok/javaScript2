@@ -186,7 +186,6 @@ class Form {
 
     _addEvent() {
         document.querySelector('.feedback-button').addEventListener('click', event => {
-            event.preventDefault();
             let flag = true;
             flag *= this._check('.feedback-name', new RegExp(/^[a-zа-яё\s]+$/i), 'Допустимы только буквы');                                      // Проверка имени
             flag *= this._check('.feedback-email', new RegExp(/^[a-z\-\.]+(@mail\.ru)$/i), 'Необходим формат my.m-ail@mail.ru');                    // Проверка email
@@ -196,6 +195,7 @@ class Form {
                 success.textContent = 'Сообщение успешно отправлено';
                 success.classList.remove('hide')
             } else {
+                event.preventDefault();
                 let success = document.querySelector('.success');
                 success.textContent = 'Сообщение не может быть отправлено';
                 success.classList.remove('hide')
