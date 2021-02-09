@@ -4,12 +4,9 @@ const app = new Vue({
     el: '#app',
     data: {
         catalogUrl: '/catalogData.json',
-        basketUrl: '/getBasket.json',
         products: [],
         basket: [],
         filter: [],
-        image: 'https://placehold.it/200x150',
-        imgBasket: 'https://placehold.it/50x100',
         show: false
     },
     methods: {
@@ -18,6 +15,9 @@ const app = new Vue({
                 .then(result => result.json())
                 .then(data => {
                     this.products = [...data];
+                })
+                .catch(() => {
+                    document.getElementById('2').classList.remove('hide');
                 });
         },
         getBasket() {
@@ -25,6 +25,9 @@ const app = new Vue({
                 .then(result => result.json())
                 .then(data => {
                     this.basket = [...data.contents];
+                })
+                .catch(() => {
+                    document.getElementById('1').classList.remove('hide');
                 });
         },
         addProduct(e) {
@@ -75,31 +78,5 @@ const app = new Vue({
 })
 
 const footer = new Vue({
-    el: '#footer',
-    data: {
-        nameRule: new RegExp(/^[a-zа-яё\s]+$/i),
-        emailRule: new RegExp(/^[a-z\-\.]+(@mail\.ru)$/i),
-        phoneRule: new RegExp(/^(\+7)\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/i),
-        showName: true,
-        showEmail: true,
-        showPhone: true,
-        showMessage: true
-    },
-    methods: {
-        contactForm(e) {
-            this.showName = this.nameRule.test(document.querySelector('.feedback-name').value);
-            this.showEmail = this.emailRule.test(document.querySelector('.feedback-email').value);
-            this.showPhone = this.phoneRule.test(document.querySelector('.feedback-phone').value);
-            this.showMessage = this.showName * this.showEmail * this.showPhone;
-            if (!(this.showMessage)) {
-                e.preventDefault();
-            }
-            if (!this.showName) {document.querySelector('.feedback-name').classList.add('redBorder');}
-            else {document.querySelector('.feedback-name').classList.remove('redBorder');}
-            if (!this.showEmail) {document.querySelector('.feedback-email').classList.add('redBorder');}
-            else {document.querySelector('.feedback-email').classList.remove('redBorder');}
-            if (!this.showPhone) {document.querySelector('.feedback-phone').classList.add('redBorder');}
-            else {document.querySelector('.feedback-phone').classList.remove('redBorder');}
-        }
-    }
+    el: '#footer'
 })

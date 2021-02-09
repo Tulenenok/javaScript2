@@ -297,3 +297,10 @@ footer {
 .redBorder {
     border: 2px solid red;
 }
+
+.notResp {
+    font-size: x-large;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    text-align: center;
+    margin: 0 auto;
+}

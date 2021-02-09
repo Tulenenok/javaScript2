@@ -14,52 +14,26 @@
 <body>
     <div id = 'app'>
         <header>
-            <form action="#" class = "searchForm" @submit="filterProducts($event)">
-                <input type="search" class="searchInput">
-                <i class="fa fa-search"></i>
-            </form>
+            <search></search>
             <p class  = 'title'>Shop</p>
             <div class = 'helper'><button class = 'button' @click="show = !show"> Корзина </button></div>
         </header>
         <main>
-            <div class="basket" v-if="show">
-                <div class = 'basket-item' v-for="item in basket" :data-title = "item.product_name" :data-price = "item.price" :data-id = "item.id_product" :data-image = "imgBasket" data-quantity = "item.quantity">
-                    <img class = 'basket-image' :src="imgBasket" alt="">
-                    <div class = 'basket-wrapper'>
-                        <p class = 'basket-title'>{{ item.product_name }}</p>
-                        <p class = 'basket-quantity'>{{ item.quantity }}</p>
-                        <p class = 'basket-price'>{{ item.price }}</p>
-                    </div>
-                    <button class = 'basket-button' @click = "removeProduct($event)" :data-title = "item.product_name" :data-price = "item.price" :data-id = "item.id_product" :data-image = "imgBasket" data-quantity = "item.quantity">-</button>
-                </div>
-            </div>
-            <div class = 'products'>
-                <div class = 'product-item show' v-for="item of products" :data-id = "item.id_product">
-                    <img class = 'products-image' :src= "image" alt="">
-                    <div class = 'product-wrapper'>
-                        <p class = 'product-title'>{{ item.product_name }}</p>
-                        <p class = 'product-price'>{{ item.price }}</p>
-                        <button class = 'product-button' @click = "addProduct($event)" :data-id = "item.id_product" :data-title = "item.product_name" :data-price = "item.price" :data-image = "image">Купить</button>
-                    </div>
-                </div>
-            </div>
+            <basket></basket>
+            <products></products>
+            <notresp :id = "2"></notresp>
         </main>
     </div>
     <footer id = 'footer'>
         <div class="feedback-title">Contact us</div>
-        <form action="#" class="feedback" @submit = "contactForm($event)">
-            <div class = "message" id = 'feedback-name' v-if="!showName">Допустимы только буквы</div>
-            <input type="text" class = 'feedback-name f-item' placeholder="Your name">
-            <div class = "message" id = feedback-email v-if="!showEmail">Необходим формат my.m-ail@mail.ru</div>
-            <input type="email" class = 'feedback-email f-item' placeholder="Your email">
-            <div class = "message" id = 'feedback-phone' v-if="!showPhone">Необходим формат +7(000)000-0000</div>
-            <input type="text" class = 'feedback-phone f-item' placeholder="Your phone">
-            <textarea name="" id="" cols="30" rows="10" class = 'feedback-text f-item' placeholder="Write your message here"></textarea>
-            <button type = 'submit' class = 'feedback-button'>Send</button>
-            <div class="success" v-if="!showMessage">Сообщение не может быть отправлено</div>
-        </form>
+        <feedbackform></feedbackform>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src = 'newMain.js'></script>
+    <script src = 'js/notresp.js'></script>
+    <script src = "js/products.js"></script>
+    <script src = 'js/basket.js'></script>
+    <script src = "js/search.js"></script>
+    <script src = 'js/feedbackform.js'></script>
+    <script src = 'js/main.js'></script>
 </body>
 </html>
