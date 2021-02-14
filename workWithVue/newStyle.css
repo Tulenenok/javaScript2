@@ -200,7 +200,13 @@ header {
     display: block;
     max-width: 100%;
     max-height: 100%;
+    width: 200px;
+    height: 150px;
     margin: auto 20px;
+}
+.basket-image {
+    width: 50px;
+    height: 100px;
 }
 
 .products-image {margin: auto auto;}

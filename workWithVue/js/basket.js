@@ -9,7 +9,7 @@ Vue.component('basketItem', {
     props: ['item'],
     data(){
         return {
-            imgBasket: 'https://placehold.it/50x100'
+            imgBasket: 'https://placehold.it/100x500'
         }
     },
     template: `<div class = 'basket-item' :data-title = "item.product_name" :data-price = "item.price" :data-id = "item.id_product" :data-image = "imgBasket" data-quantity = "item.quantity">

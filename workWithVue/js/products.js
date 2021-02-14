@@ -8,7 +8,7 @@ Vue.component('product-item', {
     props: ['item'],
     data() {
         return {
-            image: 'https://placehold.it/200x150'
+            image: 'https://placehold.it/500x500'
         } 
     },
     template: `<div class = 'product-item show' :data-id = "item.id_product">
