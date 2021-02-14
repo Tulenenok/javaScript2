@@ -69,10 +69,36 @@ const app = new Vue({
                     block.classList.remove('show');
                 }
             })
+        },
+        postJson(url, data){
+            return fetch(url, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(result => result.json())
+                .catch(error => {
+                    this.$refs.error.text = error;
+                })
+        },
+        putJson(url, data){
+            return fetch(url, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(result => result.json())
+                .catch(error => {
+                    this.$refs.error.text = error;
+                })
         }
     },
     mounted() {
-        this.getJson(`${API + this.catalogUrl}`)
+        this.getJson(`/api/products`)
         this.getBasket()
     }
 })
