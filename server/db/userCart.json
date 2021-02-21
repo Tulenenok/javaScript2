@@ -13,115 +13,22 @@
             "id_product": 456,
             "product_name": "Мышка",
             "price": 1000,
-            "quantity": 4,
+            "quantity": 1,
             "image": "https://teleporto.ru/images/detailed/9634/1375378541000_998383.jpg?t=1450813122"
         },
         {
-            "quantity": 1,
+            "quantity": 2,
             "id_product": 457,
             "product_name": "Gamepad",
             "price": 3000,
             "image": "https://images.ru.prom.st/831460562_w640_h640_gejmpad-ipega-pg-9156.jpg"
         },
         {
-            "quantity": 1,
+            "quantity": 0,
             "id_product": 124,
             "product_name": "Keyboard",
             "price": 1600,
             "image": "https://cdn1.ozone.ru/s3/multimedia-4/6003593380.jpg"
-        },
-        {
-            "quantity": 1,
-            "id_product": 124,
-            "product_name": "Keyboard",
-            "price": 1600,
-            "image": "https://cdn1.ozone.ru/s3/multimedia-4/6003593380.jpg"
-        },
-        {
-            "quantity": 1,
-            "id_product": 457,
-            "product_name": "Gamepad",
-            "price": 3000,
-            "image": "https://images.ru.prom.st/831460562_w640_h640_gejmpad-ipega-pg-9156.jpg"
-        },
-        {
-            "quantity": 1,
-            "id_product": 123,
-            "product_name": "Ноутбук",
-            "price": 45600,
-            "image": "https://img.mvideo.ru/Pdb/30047863b.jpg"
-        },
-        {
-            "quantity": 1,
-            "id_product": 456,
-            "product_name": "Мышка",
-            "price": 1000,
-            "image": "https://teleporto.ru/images/detailed/9634/1375378541000_998383.jpg?t=1450813122"
-        },
-        {
-            "id": "456",
-            "image": "https://teleporto.ru/images/detailed/9634/1375378541000_998383.jpg?t=1450813122",
-            "product_name": "Мышка",
-            "price": "1000",
-            "quantity": 1
-        },
-        {
-            "id": "456",
-            "image": "https://teleporto.ru/images/detailed/9634/1375378541000_998383.jpg?t=1450813122",
-            "product_name": "Мышка",
-            "price": "1000",
-            "quantity": 1
-        },
-        {
-            "id": "456",
-            "image": "https://teleporto.ru/images/detailed/9634/1375378541000_998383.jpg?t=1450813122",
-            "product_name": "Мышка",
-            "price": "1000",
-            "quantity": 1
-        },
-        {
-            "id": "456",
-            "image": "https://teleporto.ru/images/detailed/9634/1375378541000_998383.jpg?t=1450813122",
-            "product_name": "Мышка",
-            "price": "1000",
-            "quantity": 1
-        },
-        {
-            "id": "456",
-            "image": "https://teleporto.ru/images/detailed/9634/1375378541000_998383.jpg?t=1450813122",
-            "product_name": "Мышка",
-            "price": "1000",
-            "quantity": 1
-        },
-        {
-            "id": "456",
-            "image": "https://teleporto.ru/images/detailed/9634/1375378541000_998383.jpg?t=1450813122",
-            "product_name": "Мышка",
-            "price": "1000",
-            "quantity": 1
-        },
-        {
-            "id": "456",
-            "image": "https://teleporto.ru/images/detailed/9634/1375378541000_998383.jpg?t=1450813122",
-            "product_name": "Мышка",
-            "price": "1000",
-            "quantity": 1
-        },
-        {
-            "id": "456",
-            "id_product": "456",
-            "image": "https://teleporto.ru/images/detailed/9634/1375378541000_998383.jpg?t=1450813122",
-            "product_name": "Мышка",
-            "price": "1000",
-            "quantity": 1
-        },
-        {
-            "id": "123",
-            "id_product": "123",
-            "image": "https://img.mvideo.ru/Pdb/30047863b.jpg",
-            "product_name": "Ноутбук",
-            "price": "45600",
-            "quantity": 1
         }
     ]
 }

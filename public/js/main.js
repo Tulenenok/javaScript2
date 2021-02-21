@@ -68,7 +68,12 @@ const app = new Vue({
                         }
                     })
             } else {
-                this.basket.splice(this.basket.indexOf(find), 1);
+                this.putJson(`/api/cart/${find.id_product}`, {quantity: -1})
+                    .then(data => {
+                        if(data.result === 1){
+                            this.basket.splice(this.basket.indexOf(find), 1);
+                        }
+                    })
             }
         },
         filterProducts(e) {

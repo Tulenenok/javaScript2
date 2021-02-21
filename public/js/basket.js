@@ -12,7 +12,7 @@ Vue.component('basketItem', {
             imgBasket: 'https://placehold.it/100x500'
         }
     },
-    template: `<div class = 'basket-item' :data-title = "item.product_name" :data-price = "item.price" :data-id_product = "item.id_product" :data-id = "item.id_product" :data-image = "item.image" data-quantity = "item.quantity">
+    template: `<div v-if="item.quantity>0 "class = 'basket-item' :data-title = "item.product_name" :data-price = "item.price" :data-id_product = "item.id_product" :data-id = "item.id_product" :data-image = "item.image" data-quantity = "item.quantity">
                     <img class = 'basket-image' :src="item.image" alt="">
                     <div class = 'basket-wrapper'>
                         <p class = 'basket-title'>{{ item.product_name }}</p>
