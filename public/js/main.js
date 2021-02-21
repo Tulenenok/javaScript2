@@ -33,6 +33,7 @@ const app = new Vue({
         addProduct(e) {
             let find = this.basket.find(elem => elem.product_name  === e.target.dataset['title']);
             if (find) {
+                console.log(this.basket);
                 this.putJson(`/api/cart/${find.id_product}`, {quantity: 1})
                     .then(data => {
                         if(data.result === 1){
@@ -41,15 +42,20 @@ const app = new Vue({
                     })
             } else {
                 console.log(e.target);
-                let newProduct = {
+                let prod = {
                     id: e.target.dataset['id'],
+                    id_product: e.target.dataset['id'],
                     image: e.target.dataset['image'],
                     product_name: e.target.dataset['title'],
                     price: e.target.dataset['price'],
                     quantity: 1
                 }
-                console.log(newProduct);
-                this.basket.push(newProduct);
+                this.postJson(`/api/cart`, prod)
+                    .then(data => {
+                        if(data.result === 1){
+                            this.basket.push(prod);
+                        }
+                    })
             }
         },
         removeProduct(e) {

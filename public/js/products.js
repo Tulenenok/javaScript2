@@ -16,7 +16,7 @@ Vue.component('product-item', {
                     <div class = 'product-wrapper'>
                         <p class = 'product-title'>{{ item.product_name }}</p>
                         <p class = 'product-price'>{{ item.price }}</p>
-                        <button class = 'product-button' @click = "$root.addProduct($event)" :data-id = "item.id_product" :data-title = "item.product_name" :data-price = "item.price" :data-image = "image">Купить</button>
+                        <button class = 'product-button' @click = "$root.addProduct($event)" :data-id = "item.id_product" :data-title = "item.product_name" :data-price = "item.price" :data-image = "item.image">Купить</button>
                     </div>
                 </div>`
 })
