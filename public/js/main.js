@@ -33,7 +33,12 @@ const app = new Vue({
         addProduct(e) {
             let find = this.basket.find(elem => elem.product_name  === e.target.dataset['title']);
             if (find) {
-                find.quantity++;
+                this.putJson(`/api/cart/${find.id_product}`, {quantity: 1})
+                    .then(data => {
+                        if(data.result === 1){
+                            find.quantity++;
+                        }
+                    })
             } else {
                 console.log(e.target);
                 let newProduct = {
@@ -50,7 +55,12 @@ const app = new Vue({
         removeProduct(e) {
             let find = this.basket.find(elem => elem.product_name === e.target.dataset['title']);
             if (find.quantity > 1) {
-                find.quantity--;
+                this.putJson(`/api/cart/${find.id_product}`, {quantity: -1})
+                    .then(data => {
+                        if(data.result === 1){
+                            find.quantity--;
+                        }
+                    })
             } else {
                 this.basket.splice(this.basket.indexOf(find), 1);
             }
